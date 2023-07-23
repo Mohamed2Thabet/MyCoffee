@@ -1,0 +1,28 @@
+#header {
+    background-color: #5A020Cce ;
+} 
+#head {
+    color:#fff !important; 
+    font-weight: bold;
+}
+div.breadcrumbs {
+    background-color: #d84859ce !important;
+    color:#fff !important; 
+}
+.module h2, .module caption, .inline-group h2 {
+    background-color: #5A020Cce !important;
+    color:#fff !important;
+}
+
+.button.default ,
+input[type=submit].default ,
+.submit-row input.default,input[type="submit"], button {
+    background-color: #5A020Cce !important;
+    color:#fff !important;
+}
+.button.default:hover ,
+input[type=submit].default:hover ,
+.submit-row input.default:hover,input[type="submit"]:hover, button:hover {
+    background-color: #e05b6ace !important;
+    color:#fff !important;
+}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}| orders{% endblock title %}
+{% block content %}
+<div class="my-form container p-5 my-5 rounded border border-warning">
+    <h2 class="text-center">orders</h2>
+    <hr>
+    {%if not request.user.is_authenticated or request.user.is_anonymous %}
+    <h5 class="alert alert-warning">you must be
+    <a href="{% url 'signin' %}" class="text-dark">logged in </a>
+    OR
+    <a href="{% url 'signup' %}" class="text-dark">created in </a>
+    </h5>
+    
+    {% elif all_orders %}
+        {% if all_orders.count > 0 %}
+        <h5 class="alert alert-warning">
+            Found {{all_orders.count}}
+        </h5>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Number</th>
+                <th scope="col">Order Number</th>
+                <th scope="col">Date & Time </th>
+                <th scope="col">Items Count</th>
+                <th scope="col">Total</th>
+                <th scope="col">Is finished</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% endif %}
+        {% for order in all_orders %}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{order.id}}</td>
+            <td>{{order.order_date}}</td>
+            <td>{{order.items_count}}</td>
+            <td>{{order.total}}</td>
+            <td >{{order.is_finished}}</td>
+        </tr>
+        
+        {% endfor %}
+            {% if all_orders.count > 0 %}
+            </tbody>
+        </table>
+            {% endif %}
+
+    {% else %}
+    <h5 class="alert alert-warning">
+        No ordres here
+        <a class="dropdown-item" href="{% url 'products' %}">All Products</a>
+
+    </h5>
+    {% endif %}
+</div>
+{% endblock content %}
